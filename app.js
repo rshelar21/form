@@ -47,7 +47,7 @@ app.post('/', (req, res)=>{
     const itemdate = req.body.date;
     const itememail = req.body.email;
     const itemphone = req.body.phone;
-    const additem = new Item({
+    const additem = new forminfo({
         name: itemName,
         date:itemdate,
         phone: itemphone,
