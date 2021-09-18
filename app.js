@@ -16,10 +16,12 @@ const db = 'mongodb+srv://rss:<jackOP123>@cluster2.yww1z.mongodb.net/formdata?re
 mongoose.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
    
 }).then(() =>{
     console.log(`connecte`);
-}).catch((err) => console.log(`no`));
+}).catch((err) => console.log(err));
 
 // mongoose.connect('mongodb://localhost:27017/formdata', {useNewUrlParser: true, useUnifiedTopology: true});
 const formSchema = new mongoose.Schema({
@@ -43,7 +45,7 @@ app.post('/', (req, res)=>{
         // console.log("noo")
         res.status(404).send("item was not saved to the database")
     });
-    // res.render("index.pug");
+    
 })
 
 app.listen(port, () => {
