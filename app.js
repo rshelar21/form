@@ -28,7 +28,7 @@ const formSchema = new mongoose.Schema({
     phone: String,
     email: String,
     date: String,
-    // file: String,
+    file: String,
 });
 var forminfo = mongoose.model('form', formSchema);
 
@@ -48,11 +48,13 @@ app.post('/', (req, res)=>{
     const itemdate = req.body.date;
     const itememail = req.body.email;
     const itemphone = req.body.phone;
+    const itemphoto  = req.body.file;
     const additem = new forminfo({
         name: itemName,
         date:itemdate,
         phone: itemphone,
         email: itememail,
+        file: itemphoto,
     });
     additem.save().then(()=>{
         console.log("save")
