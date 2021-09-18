@@ -11,9 +11,9 @@ app.set('views', path.join(__dirname, 'views'))
 // app.use(express.static("style"))
 app.use(express.urlencoded())
 
-// const db = 'mongodb+srv://rss:<jackOP>@cluster2.yww1z.mongodb.net/formdata?retryWrites=true&w=majority'
+const db = 'mongodb+srv://rss:<jackOP>@cluster2.yww1z.mongodb.net/formdata?retryWrites=true&w=majority'
 
-const db = 'mongodb+srv://rohan:<rohan>@cluster0.n3pit.mongodb.net/formmdata?retryWrites=true&w=majority'
+// const db = 'mongodb+srv://rohan:rohan@cluster0.n3pit.mongodb.net/formmdata?retryWrites=true&w=majority'
 
 mongoose.connect(db, {
     useNewUrlParser: true,
