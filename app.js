@@ -11,17 +11,17 @@ app.set('views', path.join(__dirname, 'views'))
 // app.use(express.static("style"))
 app.use(express.urlencoded())
 
-// const DB = 'mongodb+srv://jackk:jackOP123@cluster1.ibtrp.mongodb.net/formdata?retryWrites=true&w=majority'
+const db = 'mongodb+srv://rss:<jackOP123>@cluster2.yww1z.mongodb.net/formdata?retryWrites=true&w=majority'
 
-// mongoose.connect(DB, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
+mongoose.connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
    
-// }).then(() =>{
-//     console.log(`connecte`);
-// }).catch((err) => console.log(`no`));
+}).then(() =>{
+    console.log(`connecte`);
+}).catch((err) => console.log(`no`));
 
-mongoose.connect('mongodb://localhost:27017/formdata', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect('mongodb://localhost:27017/formdata', {useNewUrlParser: true, useUnifiedTopology: true});
 const formSchema = new mongoose.Schema({
     name: String,
     phone: String,
