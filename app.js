@@ -45,7 +45,7 @@ app.post('/', (req, res)=>{
     //     // console.log("noo")
     //     res.status(404).send("item was not saved to the database")
     // });
-    const itemName = req.body.n;
+    const itemName = req.body.name;
     const itemdate = req.body.date;
     const itememail = req.body.email;
     const itemphone = req.body.phone;
