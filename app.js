@@ -16,9 +16,7 @@ const db = 'mongodb+srv://rss:<jackOP123>@cluster2.yww1z.mongodb.net/formdata?re
 mongoose.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-   
+  
 }).then(() =>{
     console.log(`connecte`);
 }).catch((err) => console.log(err));
@@ -37,14 +35,26 @@ app.get('/', (req, res)=>{
     res.render("index.pug");
 })
 app.post('/', (req, res)=>{
-    var myDData = new forminfo(req.body);
-    myDData.save().then(()=>{
-        console.log("save")
-        res.send("this item has been saved to the database")
-    }).catch(()=>{
-        // console.log("noo")
-        res.status(404).send("item was not saved to the database")
+    // var myDData = new forminfo(req.body);
+    // myDData.save().then(()=>{
+    //     console.log("save")
+    //     res.send("this item has been saved to the database")
+    // }).catch(()=>{
+    //     // console.log("noo")
+    //     res.status(404).send("item was not saved to the database")
+    // });
+    const itemName = req.body.n;
+    const itemdate = req.body.date;
+    const itememail = req.body.email;
+    const itemphone = req.body.phone;
+    const additem = new Item({
+        name: itemName,
+        date:itemdate,
+        phone: itemphone,
+        email: itememail,
     });
+    additem.save();
+    res.redirect("/");
     
 })
 
