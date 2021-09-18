@@ -13,7 +13,6 @@ app.use(express.urlencoded())
 
 const db = 'mongodb+srv://rss:jackOP@cluster2.yww1z.mongodb.net/formdata?retryWrites=true&w=majority'
 
-// const db = 'mongodb+srv://rohan:rohan@cluster0.n3pit.mongodb.net/formmdata?retryWrites=true&w=majority'
 
 mongoose.connect(db, {
     useNewUrlParser: true,
@@ -37,14 +36,14 @@ app.get('/', (req, res)=>{
     res.render("index.pug");
 })
 app.post('/', (req, res)=>{
-    // var myDData = new forminfo(req.body);
-    // myDData.save().then(()=>{
-    //     console.log("save")
-    //     res.send("this item has been saved to the database")
-    // }).catch(()=>{
-    //     // console.log("noo")
-    //     res.status(404).send("item was not saved to the database")
-    // });
+    var myDData = new forminfo(req.body);
+    myDData.save().then(()=>{
+        console.log("save")
+        res.send("this item has been saved to the database")
+    }).catch(()=>{
+        // console.log("noo")
+        res.status(404).send("item was not saved to the database")
+    });
     const itemName = req.body.name;
     const itemdate = req.body.date;
     const itememail = req.body.email;
@@ -55,7 +54,13 @@ app.post('/', (req, res)=>{
         phone: itemphone,
         email: itememail,
     });
-    additem.save();
+    additem.save().then(()=>{
+        console.log("save")
+        res.send("this item has been saved to the database")
+    }).catch(()=>{
+        // console.log("noo")
+        res.status(404).send("item was not saved to the database")
+    });;
    
     
 })
